@@ -11,10 +11,10 @@ RUN apt-get install -y  wget \
 RUN mkdir -p /var/www
 RUN wget https://fr.wordpress.org/wordpress-6.7.2-fr_FR.tar.gz -O /var/www/wp.gz
 RUN cd /var/www && tar -xf wp.gz && rm wp.gz
-RUN chown -R root:root /var/www/wordpress
+# RUN chown -R root:root /var/www/html
 
 COPY conf/php.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY tools/install_wp.sh /usr/local/bin/install_wp.sh
-RUN chmod +x /usr/local/bin/install_mysql.sh
+RUN chmod +x /usr/local/bin/install_wp.sh
 
 CMD /usr/local/bin/install_wp.sh
